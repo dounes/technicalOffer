@@ -1,4 +1,4 @@
-package com.fr.testairfrance.usermanagement.exception;
+package com.fr.technicaltestoffer.usermanagement.exception;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

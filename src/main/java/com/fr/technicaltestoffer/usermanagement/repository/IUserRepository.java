@@ -1,6 +1,6 @@
-package com.fr.testairfrance.usermanagement.repository;
+package com.fr.technicaltestoffer.usermanagement.repository;
 
-import com.fr.testairfrance.usermanagement.model.User;
+import com.fr.technicaltestoffer.usermanagement.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

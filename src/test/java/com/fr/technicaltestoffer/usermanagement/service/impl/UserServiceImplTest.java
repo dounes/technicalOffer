@@ -1,7 +1,10 @@
-package com.fr.testairfrance.usermanagement.service.impl;
+package com.fr.technicaltestoffer.usermanagement.service.impl;
 
-import com.fr.testairfrance.usermanagement.model.User;
-import com.fr.testairfrance.usermanagement.repository.IUserRepository;
+import com.fr.technicaltestoffer.usermanagement.exception.BadRequestException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserAlreadyExistException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserNotFrenchOrUnderAgeException;
+import com.fr.technicaltestoffer.usermanagement.model.User;
+import com.fr.technicaltestoffer.usermanagement.repository.IUserRepository;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -62,5 +65,4 @@ class UserServiceImplTest {
         Assertions.assertEquals(USER_CREATED, isCreated);
         verify(userRepository, times(1)).registerUser(user);
     }
-
 }

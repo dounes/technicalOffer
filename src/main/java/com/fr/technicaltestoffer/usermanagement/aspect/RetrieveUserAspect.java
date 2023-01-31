@@ -1,6 +1,5 @@
-package com.fr.testairfrance.usermanagement.aspect;
+package com.fr.technicaltestoffer.usermanagement.aspect;
 
-import com.fr.testairfrance.usermanagement.model.User;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -12,26 +11,25 @@ import org.springframework.util.StopWatch;
 
 @Aspect
 @Component
-public class RegisterUserAspect {
+public class RetrieveUserAspect {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution (* com.fr.testairfrance.usermanagement.service.IUserService.retrieveUser(..))")
+    @Pointcut("execution (* com.fr.technicaltestoffer.usermanagement.service.IUserService.getUser(..))")
     public void methodCall() {}
 
-    @Before(value = "methodCall() and args(user)")
-    public void beforeAdvice(JoinPoint joinPoint, User user) {
+    @Before(value = "methodCall() and args(name,birthDate)")
+    public void beforeAdvice(JoinPoint joinPoint, String name, String birthDate) {
         LOGGER.info("Before method:" + joinPoint.getSignature());
-        LOGGER.info("Attempt to register user with name - " + user.getName());
+        LOGGER.info("Retrieving User with name - " + name + " and birthdate - " + birthDate);
     }
 
-    @After(value = "methodCall() and args(user)")
-    public void afterAdvice(JoinPoint joinPoint, User user) {
+    @After(value = "methodCall() and args(name,birthDate)")
+    public void afterAdvice(JoinPoint joinPoint, String name, String birthDate) {
         LOGGER.info("After method:" + joinPoint.getSignature());
-        LOGGER.info("User " + user.getName() + " born on "+ user.getBirthDate() +" is successfully registered");
     }
 
-    @Around("@annotation(com.fr.testairfrance.usermanagement.aspect.LogExecutionTime)")
+    @Around("@annotation(com.fr.technicaltestoffer.usermanagement.aspect.LogExecutionTime)")
     public Object methodTimeLogger(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
 
@@ -45,7 +43,7 @@ public class RegisterUserAspect {
         Object result = proceedingJoinPoint.proceed();
         stopWatch.stop();
         // Log method execution time
-        LOGGER.info(stopWatch.prettyPrint());
+        LOGGER.info("Processing time : "+ stopWatch.getTotalTimeSeconds());
         return result;
     }
 }

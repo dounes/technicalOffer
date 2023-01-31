@@ -1,14 +1,18 @@
-package com.fr.testairfrance.usermanagement.controller;
+package com.fr.technicaltestoffer.usermanagement.controller;
 
-import com.fr.testairfrance.usermanagement.model.User;
-import com.fr.testairfrance.usermanagement.repository.IUserRepository;
-import com.fr.testairfrance.usermanagement.service.IUserService;
+import com.fr.technicaltestoffer.usermanagement.exception.BadRequestException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserAlreadyExistException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserNotFrenchOrUnderAgeException;
+import com.fr.technicaltestoffer.usermanagement.model.User;
+import com.fr.technicaltestoffer.usermanagement.repository.IUserRepository;
+import com.fr.technicaltestoffer.usermanagement.service.IUserService;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -16,7 +20,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.http.HttpStatus.OK;
 
 @SpringBootTest
@@ -36,6 +40,9 @@ class UserControllerTest {
     private static final String name = "Aurore ZAYUD";
     private static final String birthDate = "2021-07-01";
     private static final String USER_CREATED = "User Created!";
+
+    @Value(value = "${exception.message.userNotFrenchOrUnderAgeException}")
+    private String userNotFrenchOrUnderAgeException;
 
 
     @DisplayName("Should retrieve a user")
@@ -73,4 +80,5 @@ class UserControllerTest {
         Assertions.assertEquals(OK.value(), response.getStatusCodeValue());
         Assertions.assertEquals(USER_CREATED, response.getBody());
     }
+
 }

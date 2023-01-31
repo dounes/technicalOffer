@@ -1,4 +1,4 @@
-package com.fr.testairfrance.usermanagement.exception;
+package com.fr.technicaltestoffer.usermanagement.exception;
 
 public class BadRequestException extends RuntimeException {
     private String message;

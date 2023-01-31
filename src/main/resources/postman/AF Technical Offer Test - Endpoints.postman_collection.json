@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f3283a09-65e4-43bd-8e9b-6fc39df6c216",
-		"name": "Air France Technical Offer Test - Endpoints",
+		"name": "AF Technical Offer Test - Endpoints",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25561120"
 	},
@@ -12,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/retrieve?name=Océane LAYUD&birthDate=2020-05-01",
+					"raw": "http://localhost:8080/users/retrieve?name=John Frusciante&birthDate=2021-07-01",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -25,11 +25,11 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Océane LAYUD"
+							"value": "John Frusciante"
 						},
 						{
 							"key": "birthDate",
-							"value": "2020-05-01"
+							"value": "2021-07-01"
 						}
 					]
 				}
@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Brigitte Macron\",\r\n    \"countryOfResidence\": \"FRANCE\",\r\n    \"birthDate\": \"1900-01-27\",\r\n    \"phoneNumber\": null,\r\n    \"gender\": \"F\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Johnny Deep\",\r\n    \"countryOfResidence\": \"FRANCE\",\r\n    \"birthDate\": \"1979-01-15\",\r\n    \"phoneNumber\": 666666,\r\n    \"gender\": \"M\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -1,11 +1,13 @@
-package com.fr.testairfrance.usermanagement.service.impl;
+package com.fr.technicaltestoffer.usermanagement.service.impl;
 
-import com.fr.testairfrance.usermanagement.exception.BadRequestException;
-import com.fr.testairfrance.usermanagement.exception.UserAlreadyExistException;
-import com.fr.testairfrance.usermanagement.exception.UserNotFrenchOrUnderAgeException;
-import com.fr.testairfrance.usermanagement.model.User;
-import com.fr.testairfrance.usermanagement.repository.IUserRepository;
-import com.fr.testairfrance.usermanagement.service.IUserService;
+import com.fr.technicaltestoffer.usermanagement.exception.BadRequestException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserAlreadyExistException;
+import com.fr.technicaltestoffer.usermanagement.exception.UserNotFrenchOrUnderAgeException;
+import com.fr.technicaltestoffer.usermanagement.model.User;
+import com.fr.technicaltestoffer.usermanagement.repository.IUserRepository;
+import com.fr.technicaltestoffer.usermanagement.service.IUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements IUserService{
 
     private static final String FRANCE = "France";
 
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
+
     @Override
     public User getUser(String name, String birthDate) throws BadRequestException {
         if (name.isEmpty() || birthDate.isEmpty()) {
@@ -29,7 +34,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public String registerUser(User user) throws UserAlreadyExistException, UserNotFrenchOrUnderAgeException  {
+    public String registerUser(User user) throws BadRequestException, UserAlreadyExistException, UserNotFrenchOrUnderAgeException {
         if (user == null) {throw new BadRequestException();}
         //Verify if the user is already registered or not
         if (getUser(user.getName(), user.getBirthDate()) == null) {
@@ -37,6 +42,7 @@ public class UserServiceImpl implements IUserService{
             if (!FRANCE.equalsIgnoreCase(user.getCountryOfResidence()) || !isAdulte(user.getBirthDate())) {
                 throw new UserNotFrenchOrUnderAgeException();
             }
+            LOGGER.info("User " + user.getName() + " born on "+ user.getBirthDate() +" is successfully registered");
             return userRepository.registerUser(user) ? "User Created!" : "Unable to create user";
         } else {
             throw new UserAlreadyExistException();

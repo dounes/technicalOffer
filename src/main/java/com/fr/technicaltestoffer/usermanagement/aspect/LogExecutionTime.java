@@ -1,4 +1,4 @@
-package com.fr.testairfrance.usermanagement.aspect;
+package com.fr.technicaltestoffer.usermanagement.aspect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

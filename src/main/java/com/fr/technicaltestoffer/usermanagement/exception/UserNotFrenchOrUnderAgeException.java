@@ -1,4 +1,4 @@
-package com.fr.testairfrance.usermanagement.exception;
+package com.fr.technicaltestoffer.usermanagement.exception;
 
 public class UserNotFrenchOrUnderAgeException extends RuntimeException{
     private String message;

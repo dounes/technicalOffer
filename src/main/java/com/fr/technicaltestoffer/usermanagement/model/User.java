@@ -1,4 +1,4 @@
-package com.fr.testairfrance.usermanagement.model;
+package com.fr.technicaltestoffer.usermanagement.model;
 
 import lombok.Data;
 

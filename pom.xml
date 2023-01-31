@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.test.airfrance</groupId>
-	<artifactId>testAirFrance</artifactId>
+	<groupId>com.fr.technicaltestoffer.usermanagement</groupId>
+	<artifactId>technicaltestoffer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>testAirFrance</name>
-	<description>SpringBoot Application for Air France Technical Offer Test</description>
+	<name>technicaltestoffer</name>
+	<description>SpringBoot Application for Technical Offer Test</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

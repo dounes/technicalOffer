@@ -1,4 +1,4 @@
-#Spring boot project for Air France technical offer test
+#Spring boot project for AF technical offer test
 
 The project uses **SpringBoot** for all the application pre-configuration, **MyBatis** as an ORM framework to map the embedded **H2** database used in the application, **Spring AOP** to display logs and informations about the execution of each method of the controller, and displays also the processing time   
 
