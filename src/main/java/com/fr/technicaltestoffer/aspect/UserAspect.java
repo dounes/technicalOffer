@@ -1,8 +1,13 @@
-package com.fr.technicaltestoffer.usermanagement.aspect;
+package com.fr.technicaltestoffer.aspect;
 
+import com.fr.technicaltestoffer.dto.UserDTO;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,25 +16,25 @@ import org.springframework.util.StopWatch;
 
 @Aspect
 @Component
-public class RetrieveUserAspect {
+public class UserAspect {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution (* com.fr.technicaltestoffer.usermanagement.service.IUserService.getUser(..))")
+    @Pointcut("within (com.fr.technicaltestoffer.service..*)")
     public void methodCall() {}
 
-    @Before(value = "methodCall() and args(name,birthDate)")
-    public void beforeAdvice(JoinPoint joinPoint, String name, String birthDate) {
+    @Before(value = "methodCall() and args(userDTO)")
+    public void beforeAdvice(JoinPoint joinPoint, UserDTO userDTO) {
         LOGGER.info("Before method:" + joinPoint.getSignature());
-        LOGGER.info("Retrieving User with name - " + name + " and birthdate - " + birthDate);
+        LOGGER.info("Retrieving User with name - " + userDTO.getFullname() + " and birthdate - " + userDTO.getBirthdate());
     }
 
-    @After(value = "methodCall() and args(name,birthDate)")
-    public void afterAdvice(JoinPoint joinPoint, String name, String birthDate) {
+    @After(value = "methodCall() and args(userDTO)")
+    public void afterAdvice(JoinPoint joinPoint, UserDTO userDTO) {
         LOGGER.info("After method:" + joinPoint.getSignature());
     }
 
-    @Around("@annotation(com.fr.technicaltestoffer.usermanagement.aspect.LogExecutionTime)")
+    @Around("@annotation(com.fr.technicaltestoffer.aspect.LogExecutionTime)")
     public Object methodTimeLogger(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
 

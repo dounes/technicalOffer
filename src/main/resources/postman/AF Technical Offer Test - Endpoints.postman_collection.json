@@ -1,18 +1,17 @@
 {
 	"info": {
-		"_postman_id": "f3283a09-65e4-43bd-8e9b-6fc39df6c216",
+		"_postman_id": "9635d21e-a717-4531-9833-88660657eca5",
 		"name": "AF Technical Offer Test - Endpoints",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25561120"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Retrieve a user by his name, birthdate and country of residence",
+			"name": "Retrieve a user",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/retrieve?name=John Frusciante&birthDate=2021-07-01",
+					"raw": "http://localhost:8080/users/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -20,17 +19,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"retrieve"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "John Frusciante"
-						},
-						{
-							"key": "birthDate",
-							"value": "2021-07-01"
-						}
+						"4"
 					]
 				}
 			},
@@ -43,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Johnny Deep\",\r\n    \"countryOfResidence\": \"FRANCE\",\r\n    \"birthDate\": \"1979-01-15\",\r\n    \"phoneNumber\": 666666,\r\n    \"gender\": \"M\"\r\n}",
+					"raw": "{\r\n    \"fullname\": \"Johnny Cash\",\r\n    \"country\": \"France\",\r\n    \"birthdate\": \"1999-01-15\",\r\n    \"phone\": 51458742,\r\n    \"gender\": \"F\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -51,7 +40,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/users/register",
+					"raw": "http://localhost:8080/users/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -59,7 +48,7 @@
 					"port": "8080",
 					"path": [
 						"users",
-						"register"
+						""
 					]
 				}
 			},

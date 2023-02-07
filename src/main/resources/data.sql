@@ -1,7 +1,16 @@
-INSERT INTO USERAF (name, countryOfResidence, birthdate, phoneNumber, gender ) VALUES
-  ('John Petrucci', 'FRANCE', '1994-05-01', 555555, 'F'),
-  ('John Mayer', 'BELGIUM', '2022-02-01', 444444, 'M'),
-  ('John Frusciante', 'CANADA', '2021-07-01', 3333333, 'F'),
-  ('John Lennon', 'USA', '2000-07-01', 22222222, 'F'),
-  ('John Snow', 'USA', '1982-07-01', 11111111, 'M'),
-  ('Johnny Walker', 'USA', '1962-07-01', 00000000, 'M');
+CREATE TABLE IF NOT EXISTS USERAF(
+  `userID` INTEGER NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) NOT NULL,
+  `birthdate` DATE  NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `gender` char (1) ,
+  `phone` int(11) ,
+  PRIMARY KEY (`userID`)
+);
+
+INSERT INTO USERAF (birthdate, country, gender, fullname, phone ) VALUES
+  ('1994-05-01','FRANCE', 'F', 'John Petrucci', 65842156),
+  ('2022-02-01','BELGIUM', 'M', 'John Mayer', 444444),
+  ('1974-05-01','CANADA', 'M', 'John Frusciante', 65842156),
+  ('1984-02-10','USA', 'M', 'John Lennon', 65842156),
+  ('1962-07-01','FRANCE', 'M', 'Johnny Walker', 01020304);
